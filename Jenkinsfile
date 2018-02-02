@@ -1,10 +1,29 @@
 pipeline {
   agent { label 'linux'}
+  tools {
+    maven 'M3'
+  }
   stages {
-   stage("Hello from github"){
+   stage("checkout"){
     steps {
-      echo "Hello World"
+      git "https://github.com/cfdistortion/myProject.git"
     }
+   }
+   stage('build') {
+     steps {
+       sh 'mvn clear compile'
+     }
+   }
+   stage('Test') {
+     steps {
+       sh 'mvn test'
+       junit '**/target/surefire-reports/Test-8.xml'
+     }
+   }
+   stage('Package') {
+     steps {
+       sh 'mvn package'
+     }
    }
   }
 }
