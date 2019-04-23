@@ -8,18 +8,18 @@ pipeline {
    }
    stage('build') {
      steps {
-       sh 'mvn clean compile'
+       bat 'mvn clean compile'
      }
    }
    stage('Test') {
      steps {
-       sh 'mvn test'
+       bat 'mvn test'
        junit '**/target/surefire-reports/Test-8.xml'
      }
    }
    stage('Package') {
      steps {
-       sh 'mvn package'
+       bat 'mvn package'
      }
    }
   }
