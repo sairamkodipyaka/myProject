@@ -1,12 +1,9 @@
 pipeline {
-  agent { label 'linux'}
-  tools {
-    maven 'M2'
-  }
+  agent { label 'node1'}
   stages {
    stage("checkout"){
     steps {
-      git "https://github.com/cfdistortion/myProject.git"
+      git "https://github.com/sairamkodipyaka/myProject.git"
     }
    }
    stage('build') {
