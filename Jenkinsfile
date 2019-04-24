@@ -1,5 +1,6 @@
 pipeline {
   agent { label 'node1'}
+  tools { maven 'Maven'}
   stages {
    stage("checkout"){
     steps {
